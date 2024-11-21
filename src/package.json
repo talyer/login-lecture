@@ -92,9 +92,9 @@
   "keywords": [],
   "author": "juni",
   "license": "MIT",
-  "description": "",
+  "description": "로그인 테스트",
   "repository": {
-      "type": "git",
-      "url": ""
-  } 
+    "type": "git",
+    "url": ""
+  }
 }
