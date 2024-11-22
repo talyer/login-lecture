@@ -1,7 +1,5 @@
 "use strict";
 
-const { reduce } = require("async");
-
 class UserStorage {
     static #users = {
         id: ["jun2400", "개발자", "송현준"],
@@ -17,6 +15,16 @@ class UserStorage {
             return newUsers;
         }, {});
         return newUsers;
+    }
+    static getUsersInfo(id) {
+        const users = this.#users;
+        const index = users.id.indexOf(id);
+        const userInfo = Object.keys(users).reduce((newUser, info) => {
+            newUser[info] = users[info][index];
+            return newUser;
+        }, {});
+
+        return userInfo;
     }
 }
 
