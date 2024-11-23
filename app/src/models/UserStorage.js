@@ -1,14 +1,26 @@
 "use strict";
 
+const fs = require("fs").promises;
+
+
+
+// 유저 저장 
 class UserStorage {
-    static #users = {
-        id: ["jun2400", "개발자", "송현준"],
-        psword: ["1234", "1234", "123456"],
-        name: ["송현준", "개발자", "팀장"],
-    };
+
+    // 로그인 데이터를 getUserInfo 매서드로 보내주기
+    static #getUserInfo(data, id) {
+        const users = JSON.parse(data);
+        const index = users.id.indexOf(id);
+        const userInfo = Object.keys(users).reduce((newUser, info) => {
+            newUser[info] = users[info][index];
+            return newUser;
+        }, {});
+
+    return userInfo;
+    }
 
     static getUsers(...fields) {
-        const users = this.#users;
+        // const users = this.#users;
         const newUsers = fields.reduce((newUsers, field) => {
             if (users.hasOwnProperty(field)) {
                 newUsers[field] = users[field];
@@ -17,21 +29,21 @@ class UserStorage {
         }, {});
         return newUsers;
     }
-   
-    static getUsersInfo(id) {
-        const users = this.#users;
-        const index = users.id.indexOf(id);
-        const userInfo = Object.keys(users).reduce((newUser, info) => {
-            newUser[info] = users[info][index];
-            return newUser;
-        }, {});
 
-        return userInfo;
+
+    // 로그인
+    static getUsersInfo(id) {
+        return fs
+        .readFile("./src/databases/users.json")
+        .then((data) => {
+            return this.#getUserInfo(data, id); 
+        })
+        .catch(console.error);
     }
     
     // 회원 가입
     static save(userInfo) {
-        const users =this.#users;
+        // const users =this.#users;
         users.id.push(userInfo.id);
         users.name.push(userInfo.name);
         users.psword.push(userInfo.psword);
