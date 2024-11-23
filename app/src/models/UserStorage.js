@@ -6,6 +6,7 @@ class UserStorage {
         psword: ["1234", "1234", "123456"],
         name: ["송현준", "개발자", "팀장"],
     };
+
     static getUsers(...fields) {
         const users = this.#users;
         const newUsers = fields.reduce((newUsers, field) => {
@@ -16,6 +17,7 @@ class UserStorage {
         }, {});
         return newUsers;
     }
+   
     static getUsersInfo(id) {
         const users = this.#users;
         const index = users.id.indexOf(id);
@@ -25,6 +27,15 @@ class UserStorage {
         }, {});
 
         return userInfo;
+    }
+    
+    // 회원 가입
+    static save(userInfo) {
+        const users =this.#users;
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.psword.push(userInfo.psword);
+        return { success: true };
     }
 }
 
