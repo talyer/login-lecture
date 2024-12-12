@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        body { max-width: 400px; margin: 50px auto; text-align: center; }
+        img { width: 100%; max-width: 300px; margin-top: 10px; }
+    </style>
+    <script src="/js/home/upload.js" defer></script>
+    <title>파일 업로드</title>
 </head>
 <body>
-    This is ROOT
+<h2>파일 업로드</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*,video/*" style="margin: 20px 0">
+        <br>
+    <button type="submit" style="padding: 10px 20px; cursor: pointer">업로드</button>
+    </form>
+    <div id="preview"></div>
 </body>
 </html>
