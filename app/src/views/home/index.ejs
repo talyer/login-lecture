@@ -7,16 +7,26 @@
         body { max-width: 400px; margin: 50px auto; text-align: center; }
         img { width: 100%; max-width: 300px; margin-top: 10px; }
     </style>
+    <link rel="stylesheet" href="/css/home/upload.css"> 
     <script src="/js/home/upload.js" defer></script>
     <title>파일 업로드</title>
 </head>
 <body>
-<h2>파일 업로드</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*,video/*" style="margin: 20px 0">
-        <br>
-    <button type="submit" style="padding: 10px 20px; cursor: pointer">업로드</button>
-    </form>
-    <div id="preview"></div>
+    <div class = "upload-container">
+        <h2>파일 업로드</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*,video/*" style="margin: 30px 0; font-size: 20px;" center><br>
+            <button type="submit" style="padding: 15px 25px; cursor: pointer;" class= "btn">업로드</button>
+        </form>   
+    </div>
+    <!-- preview관련 내용을 첨부? -->
+    
+
+        <div class="preview-container" id="preview"></div> 
+    
+    <!-- <div class="actions">
+        <a href="/" class="btn2">목록으로</a> -->
+    
+    </div>
 </body>
 </html>

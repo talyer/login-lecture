@@ -1,0 +1,103 @@
+
+<header>
+    <link rel="stylesheet" href="/css/home/home.css"> 
+    <script src="/js/home/home.js" defer></script>
+    <h1>이미지 및 동영상 시청 또는 다운로드 사이트</h1>
+</header>
+<nav>
+    <a href="/">Home</a>
+    <a href="#">Test1</a>
+    <a href="#">Test2</a>
+    <a href="/index">Upload</a>
+    <a href="/login">Login/SignUp</a>
+</nav>
+<main>
+    <section>
+        <h2>이미지</h2>
+        <ul>
+          <!-- 이미지와 동영상을 따로 분리한 후 show할것 
+           일단 ejs활용을 해보고 안되면 따로 js를 이용해야 할 것 같음 
+          -->
+            <% if (files && files.length > 0) { %>
+              <% files.forEach(function(file) { %>
+                <li>
+                  <% if (file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.gif')) { %>
+                   <img src="/uploads/<%= file %>" alt="<%= file %>" style="max-width:300px">
+                  <% } else if (file.endsWith('.mp4')) { %>
+                    <br><video src="/uploads/<%= file %>" style="max-width:330px" controls></video><br>
+                  <% } else { %>
+                    <br><a href="/uploads/<%= file %>"><%= file %></a><br> <!-- 다른 파일 이용 가능 -->
+                  <% } %>
+                </li>
+              <% }); %>
+            <% } else { %>
+              <li>업로드된 파일이 없습니다.</li>
+            <% } %>
+          </ul>
+        
+        <!-- <video src="uploads/test.mp4" width="33%" poster="img/electrochemistry.jpg" controls></video>
+        <video src="video/html.m4v" width="33%" poster="img/webdev.png" controls></video>
+        <video src="video/maths.mp4" width="33%" poster="img/maths.jpg" controls></video>
+        <br>
+        <br>
+        <br>
+        <video src="video/Electrochemistry Lecture 3.mp4" width="33%" poster="img/electrochemistry l3.jpg" controls></video>
+        <video src="video/cpp.mp4" width="33%" poster="img/cpp.jpg" controls></video>
+        <video src="video/maths2.mp4" width="33%" poster="img/maths2.jpg" controls></video>
+        <br>
+        <br>
+        <br>
+        <video src="video/Electrochemistry Lecture 3.mp4" width="33%" poster="img/electrochemistry l3.jpg" controls></video>
+        <video src="video/cpp.mp4" width="33%" poster="img/cpp.jpg" controls></video>
+        <video src="video/maths2.mp4" width="33%" poster="img/maths2.jpg" controls></video>
+        <br>
+        <br>
+        <br>
+        <video src="video/Electrochemistry Lecture 3.mp4" width="33%" poster="img/electrochemistry l3.jpg" controls></video>
+        <video src="video/cpp.mp4" width="33%" poster="img/cpp.jpg" controls></video>
+        <video src="video/maths2.mp4" width="33%" poster="img/maths2.jpg" controls></video>
+        <br>
+        <br>
+        <br>
+        <video src="video/Electrochemistry Lecture 3.mp4" width="33%" poster="img/electrochemistry l3.jpg" controls></video>
+        <video src="video/cpp.mp4" width="33%" poster="img/cpp.jpg" controls></video>
+        <video src="video/maths2.mp4" width="33%" poster="img/maths2.jpg" controls></video> -->
+    </section>
+    <section>
+        <h2>동영상</h2>
+     <!-- 동영상만 나오게 변경  -->
+    </section>
+    <section>
+        <h2>Study Material</h2>
+        <!-- <a target="_blank" href="Notes/Surface Chemistry  Complete NCERT.pdf"><img src="Notes/Surface Chemistry  Complete NCERT_pages-to-jpg-0001.jpg" alt="" width="24%" height="60%"></a>
+        <a target="_blank" href="Notes/Solid State New Complete Chapter Notes.pdf"><img src="Notes/Solid State New Complete Chapter Notes-01.jpg" alt="" width="24%" height="60%"></a>
+        <a target="_blank" href="Notes/Electrochemistry  Complete NCERT.pdf"><img src="Notes/Electrochemistry  Complete NCERT-01.jpg" alt="" width="24%" height="60%"></a>
+        <a target="_blank" href="Notes/Coordination Compound 3.pdf"><img src="Notes/Coordination Compound 3-page-001 (1).jpg" alt="" width="24%" height="60%"></a> -->
+    </section>
+    <section>
+        <h2>
+            Our Founder
+        </h2>
+        <img src="img/aman.jpeg" alt="This is Aman Dhattarwal">
+        <h3>Aman Dhattarwal</h3>
+        <a href="http://www.youtube.com/amandhattarwal" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="http://www.linkedin.com/in/dhattarwalaman" target="_blank" rel="noopener noreferrer">LinkedIn</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="http://www.instagram.com/dhattarwalaman" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+        <h4>Young TEDx speaker and #1 Online JEE Educator | Founder of 5 YouTube Channels with 2.5 million young hustlers. </h4>
+        <h5>I help students across India find their right career path. I have been a guest speaker at 22 Colleges including Top IITs, BITS Pilani, IIIT's, NIT's, SRCC, Jadavpur University etc. I am the #1 Educator of JEE on India's biggest online platform
+            and I believe that everyone has the right to quality education and with the help of my social media platforms, I have helped millions of students find their path to success in the last 5 years. In the next few decades, India will rise
+            as the leader of the world with the maximum young workforce, but for this, we need some good pilots who can take us through this. I help these young hustlers find their true potential so that they can fly us to victory.</h5>
+    </section>
+</main>
+
+<footer>
+    <a href="#">FAQ</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">&copy; 2020 | Apni Kaksha</a>
+</footer>
+
+<!-- Copyright (c) 2025 by Apna College (https://codepen.io/apnacollege/pen/mdrmdEa) -->

@@ -2,8 +2,6 @@
 
 const fs = require("fs").promises;
 
-
-
 // 유저 저장 
 class UserStorage {
 
@@ -15,15 +13,13 @@ class UserStorage {
             newUser[info] = users[info][index];
             return newUser;
         }, {});
-
-    return userInfo;
+ 
+        return userInfo;
     }
-
 
     static #getUsers(data, isAll, fields) {
         const users = JSON.parse(data);
         if (isAll) return users;
-
         const newUsers = fields.reduce((newUsers, field) => {
             if (users.hasOwnProperty(field)) {
                 newUsers[field] = users[field];
@@ -41,7 +37,6 @@ class UserStorage {
         })
         .catch(console.error);
     }
-
 
     // 로그인
     static getUsersInfo(id) {

@@ -2,13 +2,20 @@
 
 const UserStorage = require("../../models/User");
 const User = require("../../models/User");
+const fs = require('fs');
 const path = require("path");
 
 
 const output = {
     home: (req,res) => {
-        // res.sendFile(path.join(__dirname, "index.ejs"));
-        res.render("home/login"); //
+        res.cookie("key", "value");
+        const uploadDir = path.join(__dirname, '../../../uploads');
+        fs.readdir(uploadDir, (err, files) => {
+            if (err) { 
+                return res.render("home/home", { files });
+            }
+            res.render("home/home", { files });
+        });
     },
 
     login: (req, res) => {
@@ -18,7 +25,7 @@ const output = {
         res.render("home/register");
     },
     upload: (req, res) => {
-        res.render("home/index"); //
+        res.render("home/index"); 
         try {
             if (!req.file) {
                 return res.status(400).json({ 
@@ -39,6 +46,8 @@ const output = {
             });
         }
     },
+
+    
 };
 
 
@@ -47,6 +56,11 @@ const process = {
     login: async (req,res) => {
         const user = new User(req.body);
         const response = await user.login();
+        /////////////////////////////
+        // if (response.success) {
+        //     req.session.user = { id: req.body.id };
+        // };
+        //////////////////////////////
         return res.json(response);
     },
     register: async (req,res) => {
@@ -54,7 +68,7 @@ const process = {
         const response = await user.register();
         return res.json(response);
     },
-    upload: (req, res) => {
+    upload: async (req, res) => {
         try {
             console.log('Upload request received:', req.file); // 디버깅용 로그
 
@@ -68,7 +82,7 @@ const process = {
             const fileType = req.file.mimetype.startsWith('image/') ? 'image' : 
                            req.file.mimetype.startsWith('video/') ? 'video' : 'unknown';
 
-            return res.json({
+            return res.json ({ // response 수정
                 success: true,
                 message: '파일 업로드 성공',
                 filename: req.file.filename,

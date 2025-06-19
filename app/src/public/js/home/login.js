@@ -22,7 +22,8 @@ const id = document.querySelector("#id"),
         .then((res) => res.json())
         .then((res) => {
             if (res.success) {
-                location.href = "/index"; // // 로그인 성공시 원래 사이트로 돌아가기
+                // setHeader('set-cookie', `login=${userid}`);
+                location.href = "/"; // // 로그인 성공시 원래 사이트로 돌아가기
             } else {
                 alert(res.msg);
             }
