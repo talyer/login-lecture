@@ -26,25 +26,6 @@ const output = {
     },
     upload: (req, res) => {
         res.render("home/index"); 
-        try {
-            if (!req.file) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: '파일이 업로드되지 않았습니다.' 
-                });
-            }
-
-            res.json({
-                success: true,
-                message: '파일 업로드 성공',
-                filename: req.file.filename
-            });
-        } catch (error) {
-            res.status(500).json({ 
-                success: false, 
-                message: '서버 오류가 발생했습니다.' 
-            });
-        }
     },
 
     

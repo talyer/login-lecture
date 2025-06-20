@@ -81,12 +81,7 @@ class PreviewHandler {
     }
 
     handleBack() {
-        // 브라우저 히스토리가 있으면 뒤로가기, 없으면 홈으로
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = '/';
-        }
+        window.location.href = '/';
     }
 
     handleKeyPress(e) {

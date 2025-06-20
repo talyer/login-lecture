@@ -26,16 +26,16 @@ const maxAge = 5*60*1000 // 세션의 유호기간을 따로 변수로 뺌뺌
 const home = require("./src/routes/home");
 
 
-const sessionObj = {
-    secret: '#$!83617#134', // 암호화할때 필요한 요소값 (아무값임)
-    resave: false,
-    saveUninitialized: true,
-    store: new Memorystore({checkPeriod:maxAge}), // memorystore를 usersjson에 활용을 해야 하는데데
-    cookie: {
-        maxAge:maxAge, // 쿠키에 대한 여러 설정을 객체 안에 넣음 
-        // (maxAge, Httponly, path 등등)
-    } 
-}
+// const sessionObj = {
+//     secret: '#$!83617#134', // 암호화할때 필요한 요소값 (아무값임)
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new Memorystore({checkPeriod:maxAge}), // memorystore를 usersjson에 활용을 해야 하는데데
+//     cookie: {
+//         maxAge:maxAge, // 쿠키에 대한 여러 설정을 객체 안에 넣음 
+//         // (maxAge, Httponly, path 등등)
+//     } 
+// }
 
 
 
@@ -55,8 +55,8 @@ app.use("/", home); // use -> 미들웨어를 등록해주는 메서드
 
 
 
-app.use(cookieParser())
-app.use(session(sessionObj)) // 쿠키가 있는지 없는지 확인해주는 미들웨어
+// app.use(cookieParser())
+// app.use(session(sessionObj)) // 쿠키가 있는지 없는지 확인해주는 미들웨어
 
 
 module.exports = app;
